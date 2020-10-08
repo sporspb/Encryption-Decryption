@@ -1,23 +1,22 @@
 package encryptdecrypt;
 
-import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String command = scanner.nextLine();
-        String s = scanner.nextLine();
-        char[] text = s.toCharArray();
-        int key = scanner.nextInt();
+
+        String mode = getMode(args);
+        char[] text = getData(args).toCharArray();
+        int key = getKey(args);
         int startPos = 32;
         int endPos = 126;
 
-        if (command.equals("enc")) {
+        if (mode.equals("enc")) {
             System.out.println(doEncrypt(text, key, startPos, endPos));
-        } else if (command.equals("dec")) {
+        } else if (mode.equals("dec")) {
             System.out.println(doDecrypt(text, key, startPos, endPos));
         } else {
-            System.out.println("wrong command");
+            System.out.println("wrong mode");
         }
     }
 
@@ -44,5 +43,30 @@ public class Main {
             }
         }
         return new String(message);
+    }
+
+    static int getPos(String[] array, String s) {
+        return Arrays.asList(array).indexOf(s);
+    }
+
+    static String getMode(String[] array) {
+        int pos = getPos(array, "-mode");
+        if (pos >= 0) {
+            return array[pos + 1];
+        } else return "enc";
+    }
+
+    static String getData(String[] array) {
+        int pos = getPos(array, "-data");
+        if (pos >= 0) {
+            return array[pos + 1];
+        } else return "";
+    }
+
+    static int getKey(String[] array) {
+        int pos = getPos(array, "-key");
+        if (pos >= 0) {
+            return Integer.parseInt(array[pos + 1]);
+        } else return 0;
     }
 }
