@@ -6,9 +6,25 @@ files:
   text: |
     package encryptdecrypt;
 
+    import java.util.Scanner;
+
     public class Main {
         public static void main(String[] args) {
-            System.out.println("Hello World!");
+            Scanner scanner = new Scanner(System.in);
+            String s = scanner.nextLine();
+            char[] message = s.toCharArray();
+            int key = scanner.nextInt();
+            int startPos = 96;
+
+            for (int i = 0; i < message.length; i++) {
+                char letter = message[i];
+                if (letter >= 97 && letter <= 122) {
+                    int pos = (letter + key - startPos) % 26;
+                    message[i] = (char) (startPos + pos);
+                }
+            }
+
+            System.out.println(new String(message));
         }
     }
   learner_created: false
@@ -65,8 +81,4 @@ files:
   learner_created: false
 feedback_link: https://hyperskill.org/projects/46/stages/247/implement
 status: Solved
-feedback:
-  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/46/stages/247/implement">JetBrains
-    Academy</a>
-  time: Wed, 30 Sep 2020 12:57:38 UTC
-record: 3
+record: 2

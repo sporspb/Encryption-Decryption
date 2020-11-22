@@ -8,7 +8,7 @@ files:
 
     public class Main {
         public static void main(String[] args) {
-            System.out.println("Hello World!");
+            System.out.println("dv ulfmw z givzhfiv!");
         }
     }
   learner_created: false
@@ -108,8 +108,4 @@ files:
   learner_created: false
 feedback_link: https://hyperskill.org/projects/46/stages/246/implement
 status: Solved
-feedback:
-  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/46/stages/246/implement">JetBrains
-    Academy</a>
-  time: Wed, 30 Sep 2020 11:36:22 UTC
-record: 2
+record: 1
