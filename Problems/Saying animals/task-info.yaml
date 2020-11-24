@@ -22,10 +22,6 @@ files:
 
     }
   learner_created: false
-feedback_link: https://hyperskill.org/learn/step/2200
+feedback_link: https://hyperskill.org/learn/step/2200#comment
 status: Solved
-feedback:
-  message: <html>Correct solution<br/><br/>Continue on <a href="https://hyperskill.org/learn/step/2200">JetBrains
-    Academy</a></html>
-  time: Sun, 22 Nov 2020 10:07:41 UTC
 record: -1
