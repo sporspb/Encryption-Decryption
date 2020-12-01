@@ -1,3 +1,5 @@
+.iml
+.yaml
 .gradle
 .idea
 gradle/
