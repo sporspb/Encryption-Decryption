@@ -40,6 +40,12 @@ content:
 - Saying animals
 - Find mistake
 - Publication and its subclasses
+- The index of the first max in an array
+- Check burgs
+- Return empty string when argument is null
+- Avoid NPE
+- Only true or false
+- Safe converting
 - IntBinaryOperation
 - Users and WebSites
 - Shape hierarchy
@@ -48,3 +54,5 @@ content:
 - Impement a default method
 - Add new default method
 - The longest word
+- Spiral
+- Cinema
