@@ -54,17 +54,18 @@ content:
 - Impement a default method
 - Add new default method
 - The longest word
+- Distance
+- Difference between two doubles
+- Liquid pressure
+- Pow
+- Heron's formula
+- The angle between vectors
 - Spiral
 - Cinema
 - Field count
 - Declared fields
 - Next even number
-- Concat all strings without digits
-- Users as strings
-- Time as a string
-- Books as strings
-- Who is who
-- Counting 2D shapes
-- Sum of the areas
-- Complex numbers
-- Numbers divisible by six
+- Fix the method to print strings in the reverse order
+- N-th power
+- Max and Min
+- Pick your team
