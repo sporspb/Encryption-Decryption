@@ -8,66 +8,30 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         String mode = getMode(args);
         String fileName = getNameOutputFile(args);
+        String alg = getAlg(args);
         char[] text = getData(args).toCharArray();
         int key = getKey(args);
-        int startPos = 32;
-        int endPos = 126;
+        Cipher cipher = new Cipher();
+
+        if (alg.equals("unicode")) {
+            cipher.setCipher(new UnicodeCipher());
+        } else if (alg.equals("shift")) {
+            cipher.setCipher(new CesarCipher());
+        } else {
+            outputResult("Wrong algorithm", fileName);
+        }
 
         if (mode.equals("enc")) {
-            try {
-                outputResult(doEncrypt(text, key, startPos, endPos), fileName);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            outputResult(cipher.doEnc(text, key), fileName);
         } else if (mode.equals("dec")) {
-            try {
-                outputResult(doDecrypt(text, key, startPos, endPos), fileName);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            outputResult(cipher.doDec(text, key), fileName);
         } else {
-            try {
-                outputResult("wrong mode", fileName);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            outputResult("Wrong mode", fileName);
         }
-    }
-
-    public static void outputResult(String text, String fileName) throws IOException {
-        if (fileName.isEmpty()) {
-            System.out.println(text);
-        } else writeToFile(text, fileName);
-    }
-
-
-    static String doEncrypt(char[] message, int key, int startPos, int endPos) {
-        for (int i = 0; i < message.length; i++) {
-            char letter = message[i];
-            if (letter >= startPos && letter <= endPos) {
-                int pos = (letter + key - startPos) % (endPos - startPos + 1);
-                message[i] = (char) (startPos + pos);
-            }
-        }
-        return new String(message);
-    }
-
-    static String doDecrypt(char[] message, int key, int startPos, int endPos) {
-        for (int i = 0; i < message.length; i++) {
-            char letter = message[i];
-            if (letter - key < startPos) {
-                int pos = endPos - (letter - startPos - key);
-                message[i] = (char) (startPos + pos);
-            } else {
-                int pos = (letter - key);
-                message[i] = (char) pos;
-            }
-        }
-        return new String(message);
     }
 
     static int getPos(String[] array, String s) {
@@ -79,6 +43,13 @@ public class Main {
         if (pos >= 0) {
             return array[pos + 1];
         } else return "enc";
+    }
+
+    static String getAlg(String[] array) {
+        int pos = getPos(array, "-alg");
+        if (pos >= 0) {
+            return array[pos + 1];
+        } else return "shift";
     }
 
     static String getData(String[] array) {
@@ -104,6 +75,12 @@ public class Main {
         if (pos >= 0) {
             return Integer.parseInt(array[pos + 1]);
         } else return 0;
+    }
+
+    public static void outputResult(String text, String fileName) throws IOException {
+        if (fileName.isEmpty()) {
+            System.out.println(text);
+        } else writeToFile(text, fileName);
     }
 
     static String getNameOutputFile(String[] array) {

@@ -248,6 +248,21 @@ files:
 
     }
   learner_created: false
+- name: src/encryptdecrypt/CesarCipher.java
+  visible: true
+  learner_created: true
+- name: src/encryptdecrypt/UnicodeCipher.java
+  visible: true
+  learner_created: true
+- name: src/encryptdecrypt/Cipher.java
+  visible: true
+  learner_created: true
+- name: src/encryptdecrypt/Decipherable.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/46/stages/250/implement
-status: Unchecked
+status: Solved
+feedback:
+  message: Congratulations!
+  time: Sat, 05 Dec 2020 20:50:31 UTC
 record: -1
